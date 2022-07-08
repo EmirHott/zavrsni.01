@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="bookshopPU" transaction-type="JTA">
+        <jta-data-source>jdbc/bookshop</jta-data-source>
+        <class>com.bookdb.bookdb.ejb.user.entity.User</class>
+        <class>com.bookdb.bookdb.ejb.user.privilege.entity.Privilege</class>
+        <class>com.bookdb.bookdb.ejb.user.notes.entity.Note</class>
+        <class>com.bookdb.bookdb.ejb.user.notes.status.entity.Status</class>
+        <class>com.bookdb.bookdb.ejb.books.entity.Book</class>
+        <class>com.bookdb.bookdb.ejb.books.genre.entity.Genre</class>
+        <class>com.bookdb.bookdb.ejb.books.author.entity.Author</class>
+        <class>com.bookdb.bookdb.ejb.books.publisher.entity.Publisher</class>
+        <class>com.bookdb.bookdb.ejb.books.bookimg.entity.BookImg</class>
+
+    </persistence-unit>
+</persistence>
