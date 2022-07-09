@@ -3,13 +3,7 @@
 <%@ page import="com.bookdb.bookdb.ejb.user.notes.entity.Note" %>
 <%@ page import="com.bookdb.bookdb.ejb.books.author.entity.Author" %>
 <%@ page import="com.bookdb.bookdb.ejb.books.genre.entity.Genre" %>
-<%@ page import="com.bookdb.bookdb.ejb.books.publisher.entity.Publisher" %><%--
-  Created by IntelliJ IDEA.
-  User: Emir
-  Date: 04/07/2022
-  Time: 18:52
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.bookdb.bookdb.ejb.books.publisher.entity.Publisher" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -24,6 +18,7 @@
     Author author = (Author) request.getAttribute("lastauthor");
     Genre genre = (Genre) request.getAttribute("lastgenre");
     Publisher publisher = (Publisher) request.getAttribute("lastpublisher");
+    Note note = (Note) request.getAttribute("lastnote");
 
 %>
 
@@ -57,10 +52,10 @@
     </div>
 <div class="col text-center">
     <div class="card h-100">
-        <img src="" class="card-img-top img-fluid mx-auto d-block" alt="book-img" style="width: 40%; height: 40%;">
+        <img src="https://i.ibb.co/YhRGBPg/notes.png" class="card-img-top img-fluid mx-auto d-block" alt="notes-img" style="width: 48%; height: 48%;">
         <div class="card-body">
             <h5 class="card-title">Notes in database :</h5>
-            <p class="card-text"></p>
+            <p class="card-text"><%=note.getNoteId()%></p>
         </div>
     </div>
 </div>

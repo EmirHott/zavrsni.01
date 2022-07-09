@@ -9,6 +9,7 @@ import com.bookdb.bookdb.ejb.books.publisher.entity.Publisher;
 import com.bookdb.bookdb.ejb.books.publisher.service.PublisherServiceLocal;
 import com.bookdb.bookdb.ejb.books.service.BookServiceLocal;
 import com.bookdb.bookdb.ejb.user.entity.User;
+import com.bookdb.bookdb.ejb.user.notes.entity.Note;
 import com.bookdb.bookdb.ejb.user.notes.service.NoteServiceLocal;
 import com.bookdb.bookdb.ejb.user.service.UserServiceLocal;
 import com.bookdb.bookdb.paths.Paths;
@@ -45,8 +46,8 @@ public class ToViewServlet extends HttpServlet {
             request.setAttribute("lastbook", book);
             User user = userServiceLocal.findLastId();
             request.setAttribute("lastuser", user);
-           // Note note = noteServiceLocal.findLastId();
-          //  request.setAttribute("lastnote", note);
+            Note note = noteServiceLocal.findLastId();
+            request.setAttribute("lastnote", note);
             Author author = authorServiceLocal.findLastId();
             request.setAttribute("lastauthor",author);
             Genre genre = genreServiceLocal.findLastId();

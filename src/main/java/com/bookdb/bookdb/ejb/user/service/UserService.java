@@ -57,8 +57,8 @@ public class UserService extends AbstractService<User> implements UserServiceLoc
     public User findByUsername(String username) {
         User user = null;
         try {
-            Query query = entityManager.createNamedQuery("User.findByUsername");
-            query.setParameter("username", username);
+            Query query = entityManager.createNamedQuery("User.findByUsername")
+                    .setParameter("username", username);
             user = (User) query.getSingleResult();
             return user;
         } catch (NonUniqueResultException | NoResultException e) {

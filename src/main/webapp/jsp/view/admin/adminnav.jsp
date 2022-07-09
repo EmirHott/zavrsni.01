@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/jsp/view/admin/adminview.jsp">Home</a>
+                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/ToViewServlet">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/UsersServlet">Users</a>
@@ -32,7 +32,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/BookServlet">Books</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">Notes</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/NoteServlet">Notes</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
