@@ -1,7 +1,15 @@
 package com.bookdb.bookdb.user.view;
 
 
+import com.bookdb.bookdb.ejb.books.author.entity.Author;
+import com.bookdb.bookdb.ejb.books.author.service.AuthorServiceLocal;
+import com.bookdb.bookdb.ejb.books.bookimg.entity.BookImg;
+import com.bookdb.bookdb.ejb.books.bookimg.service.BookImgServiceLocal;
 import com.bookdb.bookdb.ejb.books.entity.Book;
+import com.bookdb.bookdb.ejb.books.genre.entity.Genre;
+import com.bookdb.bookdb.ejb.books.genre.service.GenreServiceLocal;
+import com.bookdb.bookdb.ejb.books.publisher.entity.Publisher;
+import com.bookdb.bookdb.ejb.books.publisher.service.PublisherServiceLocal;
 import com.bookdb.bookdb.ejb.books.service.BookServiceLocal;
 import com.bookdb.bookdb.paths.Paths;
 import com.bookdb.bookdb.user.session.Session;
@@ -20,6 +28,16 @@ public class BookServlet extends HttpServlet {
 
     @Inject
     BookServiceLocal bookServiceLocal;
+    @Inject
+    GenreServiceLocal genreServiceLocal;
+    @Inject
+    AuthorServiceLocal authorServiceLocal;
+    @Inject
+    BookImgServiceLocal bookImgServiceLocal;
+    @Inject
+    PublisherServiceLocal publisherServiceLocal;
+
+
 
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -30,6 +48,21 @@ public class BookServlet extends HttpServlet {
             String privilegeName = Session.USER.getFromSession(request).getPrivilegeId().getPrivilegeName();
 
             if(privilegeName.equalsIgnoreCase("admin")){
+
+                List<Genre> genres = genreServiceLocal.findAll();
+                request.setAttribute("genrelist", genres);
+
+                List<Author> authors = authorServiceLocal.findAll();
+                request.setAttribute("authorlist",authors);
+
+                List<BookImg> bookImgs = bookImgServiceLocal.findAll();
+                request.setAttribute("bookimglist", bookImgs);
+
+                List<Publisher> publishers = publisherServiceLocal.findAll();
+                request.setAttribute("publisherlist",publishers);
+
+
+
                 RequestDispatcher toView = request.getRequestDispatcher(Paths.ADMINBOOKS);
                 toView.forward(request,response);
             }

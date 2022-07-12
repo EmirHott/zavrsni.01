@@ -24,7 +24,7 @@ import java.util.Objects;
         @NamedQuery(name = "Book.findByPublicationDate", query = "SELECT b FROM Book b WHERE b.bookPublicationDate= :bookPublicationDate"),
         @NamedQuery(name = "Book.findByRating", query = "SELECT b FROM Book b WHERE b.bookRating = :bookRating"),
         @NamedQuery(name = "Book.findLast", query = "SELECT b FROM Book b ORDER BY b.bookId DESC "),
-        @NamedQuery(name = "Book.findContainInTitle", query = "SELECT b FROM Book b WHERE b.bookTitle LIKE CONCAT('%',:bookTitle,'%')")
+        @NamedQuery(name = "Book.findContainInTitle", query = "SELECT b FROM Book b WHERE b.bookTitle LIKE CONCAT('%',:text,'%')")
 })
 public class Book implements Serializable{
 

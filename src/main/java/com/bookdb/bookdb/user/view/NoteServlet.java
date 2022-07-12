@@ -1,7 +1,9 @@
 package com.bookdb.bookdb.user.view;
 
+import com.bookdb.bookdb.ejb.user.entity.User;
 import com.bookdb.bookdb.ejb.user.notes.entity.Note;
 import com.bookdb.bookdb.ejb.user.notes.service.NoteServiceLocal;
+import com.bookdb.bookdb.ejb.user.service.UserServiceLocal;
 import com.bookdb.bookdb.paths.Paths;
 import com.bookdb.bookdb.user.session.Session;
 import jakarta.inject.Inject;
@@ -19,17 +21,24 @@ public class NoteServlet extends HttpServlet {
     @Inject
     NoteServiceLocal noteServiceLocal;
 
+
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         try {
-            List<Note> notes = noteServiceLocal.findAll();
-            request.setAttribute("notelist", notes);
+
             String privilegeName = Session.USER.getFromSession(request).getPrivilegeId().getPrivilegeName();
 
             if(privilegeName.equalsIgnoreCase("admin")){
+                List<Note> allNotes = noteServiceLocal.findAll();
+                request.setAttribute("notelist", allNotes);
                 RequestDispatcher toView = request.getRequestDispatcher(Paths.ADMINNOTE);
                 toView.forward(request,response);
             }
             else {
+                User user = Session.USER.getFromSession(request);
+                //zamjeniti findall sa drugom metodom
+                List <Note> notes = (List<Note>) noteServiceLocal.findAll();
+                request.setAttribute("notelist", notes);
+
                 RequestDispatcher toView = request.getRequestDispatcher(Paths.USERNOTE);
                 toView.forward(request, response);
             }

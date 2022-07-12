@@ -26,11 +26,11 @@ public class BookService extends AbstractService<Book> implements BookServiceLoc
 
 
     @Override
-    public List<Book> findByContainsInTitle(String bookTitle) {
+    public List<Book> findByContainsInTitle(String text) {
       List<Book> books = null;
         try {
-            Query query = entityManager.createNamedQuery("Book.findContainInTitle");
-            query.setParameter("bookTitle", bookTitle);
+            Query query = entityManager.createNamedQuery("Book.findContainInTitle")
+                    .setParameter("text", text);
             return books;
         } catch (NonUniqueResultException | NoResultException e) {
             Logger.getLogger("BOOK TITLE QUERY").log(Level.INFO, e.getMessage());

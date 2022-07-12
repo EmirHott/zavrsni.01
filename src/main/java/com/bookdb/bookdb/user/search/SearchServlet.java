@@ -23,8 +23,8 @@ public class SearchServlet extends HttpServlet {
 
         try {
            List <Book> books = (List<Book>) bookServiceLocal.findByContainsInTitle(request.getParameter("search"));
-            if(books != null){
             request.setAttribute("findedbook", books);
+           if(!(books == null)){
                RequestDispatcher requestDispatcher = request.getRequestDispatcher(Paths.SEARCHVIEW);
                requestDispatcher.forward(request, response);
             }else {

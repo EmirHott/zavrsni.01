@@ -43,5 +43,34 @@
 </table>
 </div>
 
+
+<div>
+    <h4>Find username :</h4>
+    <form action="" class="">
+        <div class="input-group mb-4">
+            <div class="col-sm-7">
+            <input type="text" class="form-control form-control-md" placeholder="Search Here">
+            <button type="submit" class="input-group-text btn-success"><i class="bi bi-search me-2"></i> Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <%
+        User user = (User) request.getAttribute("founduser");
+    %>
+    <div class="row">
+        <div class="col-sm-2">
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+        </div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email">
+        </div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" placeholder="Privilege" aria-label="Privilege">
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
