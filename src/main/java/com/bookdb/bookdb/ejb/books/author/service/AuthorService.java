@@ -36,4 +36,19 @@ public class AuthorService extends AbstractService<Author> implements AuthorServ
         return author;
     }
 
+    @Override
+    public Author findByName(String authorName) {
+        Author author = null;
+
+        try{
+            Query query = entityManager.createNamedQuery("Author.findByName")
+                    .setParameter("authorName",authorName);
+            author = (Author) query.getSingleResult();
+            return author;
+        }catch (NoResultException | NonUniqueResultException e){
+            Logger.getLogger("AUTHOR NAME QUERY").log(Level.INFO,e.getMessage());
+        }
+        return author;
+    }
+
 }

@@ -20,4 +20,6 @@ public interface GenreServiceLocal {
     List<Genre> findAll();
 
     Genre findLastId();
+
+    Genre findByGenreName(String genreName);
 }

@@ -1,6 +1,6 @@
 package com.bookdb.bookdb.ejb.user.notes.service;
 
-import com.bookdb.bookdb.ejb.user.entity.User;
+
 import com.bookdb.bookdb.ejb.user.notes.entity.Note;
 import jakarta.ejb.Local;
 
@@ -20,5 +20,5 @@ public interface NoteServiceLocal {
 
     Note findLastId();
 
-
+    List<Note> findByUserId(Integer id);
 }

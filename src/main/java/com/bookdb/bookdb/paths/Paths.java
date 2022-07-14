@@ -24,6 +24,11 @@ public interface Paths {
 
     public static final String SEARCHVIEW = "/jsp/view/user/searchview.jsp";
 
+    public static final String BOOKSERVLET = "/BookServlet";
+
+    public static final String NOTESERVLET = "/NoteServlet";
+
+    public static final String USERSERVLET = "/UserServlet";
 
 
 }

@@ -15,10 +15,12 @@
 
 
 <%
+
     List<Book> books = (List<Book>) request.getAttribute("findedbook");
     for(Book book : books){
 
 %>
+<p><%=book == null ? request.getAttribute("message") :"" %></p>
 <div class="row row-cols-1 row-cols-md-1 g-4 align-items-center" style="margin: 20px 300px 40px 300px;">
     <div class="col text-center ">
         <div class="card h-100 ">

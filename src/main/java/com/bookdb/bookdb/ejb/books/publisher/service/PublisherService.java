@@ -36,4 +36,19 @@ public class PublisherService extends AbstractService<Publisher> implements Publ
         return publisher;
     }
 
+    @Override
+    public Publisher findByName(String publisherName) {
+       Publisher publisher = null;
+
+       try{
+           Query query = entityManager.createNamedQuery("Publisher.findByName").
+                   setParameter("publisherName",publisherName);
+           publisher = (Publisher) query.getSingleResult();
+           return publisher;
+       }catch (NonUniqueResultException | NoResultException e){
+           Logger.getLogger("PUBLISHER FIND BY NAME QUERY").log(Level.INFO,e.getMessage());
+       }
+        return publisher;
+    }
+
 }

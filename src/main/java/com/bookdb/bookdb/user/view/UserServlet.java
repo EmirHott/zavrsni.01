@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet(name = "UsersServlet", value = "/UsersServlet")
+@WebServlet(name = "UserServlet", value = "/UserServlet")
 public class UserServlet extends HttpServlet {
     @Inject
     UserServiceLocal userServiceLocal;
@@ -21,8 +21,14 @@ public class UserServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         try {
+
+
             List<User> users = userServiceLocal.findAll();
             request.setAttribute("lista", users);
+
+            User user = (User) userServiceLocal.findByUsername(request.getParameter("finduser"));
+            request.setAttribute("findeduser",user);
+
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(Paths.USERS);
             requestDispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

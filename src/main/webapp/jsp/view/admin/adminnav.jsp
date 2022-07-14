@@ -26,7 +26,7 @@
                     <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/ToViewServlet">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/UsersServlet">Users</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/UserServlet">Users</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/BookServlet">Books</a>

@@ -81,7 +81,43 @@
         </tbody>
     </table>
 </div>
-<h4 style="text-align: center; font-family: sans-serif, bold; margin-top: 20px;" >Genres in Database:</h4>
+
+
+<div style="margin: 20px">
+<h4>Find Genre by name :</h4>
+<form class="d-flex w-50" method="post" action="BookServlet">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="findgenre">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+</div>
+<%
+    Genre genre = (Genre) request.getAttribute("findedgenre");
+%>
+
+<div style="margin: 20px">
+    <form method="post" action="">
+        <div class="row mb-3">
+            <label  class="col-sm-2 col-form-label">Genre Id</label>
+            <div class="col-sm-2">
+                <input name="genreid" type="text" class="form-control" value="<%= genre != null ?genre.getGenreId():""%>" readonly>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label  class="col-sm-2 col-form-label">Genre Name</label>
+            <div class="col-sm-2">
+                <input name="genrename" type="text" class="form-control" value="<%= genre != null ?genre.getGenreName(): ""%>">
+            </div>
+        </div>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = 'AddGenreServlet';">Add</button>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = 'EditGenreServlet';">Edit</button>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = 'RemoveGenreServlet';">Remove</button>
+    </form>
+</div>
+
+
+
+
+<h4 style="text-align: center; font-family: sans-serif, bold; margin-top: 20px;" >Authors in Database:</h4>
 <div  class="table-responsive-md" style="margin: 30px">
     <table class="table table-hover">
         <thead>
@@ -105,6 +141,47 @@
         </tbody>
     </table>
 </div>
+
+<div style="margin: 20px">
+    <h4>Find Author by name :</h4>
+    <form class="d-flex w-50" method="post" action="BookServlet">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="findauthor">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
+<%
+    Author author = (Author) request.getAttribute("findedauthor");
+%>
+
+<div style="margin: 20px">
+    <form method="post" action="">
+        <div class="row mb-3">
+            <label  class="col-sm-2 col-form-label">Author Id</label>
+            <div class="col-sm-2">
+                <input name="authorid" type="text" class="form-control" value="<%= author != null ?author.getAuthorId():""%>" readonly>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label  class="col-sm-2 col-form-label">Author Name</label>
+            <div class="col-sm-2">
+                <input name="authorname" type="text" class="form-control" value="<%= author != null ? author.getAuthorName(): ""%>">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label  class="col-sm-2 col-form-label">Author Surname</label>
+            <div class="col-sm-2">
+                <input name="authorsurname" type="text" class="form-control" value="<%= author != null ? author.getAuthorSurname(): ""%>">
+            </div>
+        </div>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = 'AddAuthorServlet';">Add</button>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = 'EditAuthorServlet';">Edit</button>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = 'RemoveAuthorServlet';">Remove</button>
+    </form>
+</div>
+
+
+
+
 
 <h4 style="text-align: center; font-family: sans-serif, bold; margin-top: 20px;" >Book Images in Database:</h4>
 <div  class="table-responsive-md" style="margin: 30px">
@@ -152,6 +229,36 @@
 </div>
 
 
+<div style="margin: 20px">
+    <h4>Find Publisher by name :</h4>
+    <form class="d-flex w-50" method="post" action="BookServlet">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="findpublisher">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
+<%
+    Publisher publisher = (Publisher) request.getAttribute("findedpublisher");
+%>
+
+<div style="margin: 20px">
+    <form method="post" action="">
+        <div class="row mb-3">
+            <label  class="col-sm-2 col-form-label">Publisher Id</label>
+            <div class="col-sm-2">
+                <input name="publisherid" type="text" class="form-control" value="<%= publisher != null ?publisher.getPublisherId():""%>" readonly>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label  class="col-sm-2 col-form-label">Publisher Name</label>
+            <div class="col-sm-2">
+                <input name="publishername" type="text" class="form-control" value="<%= publisher != null ?publisher.getPublisherName(): ""%>">
+            </div>
+        </div>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = 'AddPublisherServlet';">Add</button>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = '';">Edit</button>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = '';">Remove</button>
+    </form>
+</div>
 
 
 

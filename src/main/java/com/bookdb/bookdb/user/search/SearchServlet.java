@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @WebServlet(name = "SearchServlet", value = "/SearchServlet")
 public class SearchServlet extends HttpServlet {
@@ -22,16 +23,18 @@ public class SearchServlet extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
 
         try {
-           List <Book> books = (List<Book>) bookServiceLocal.findByContainsInTitle(request.getParameter("search"));
+            // List <Book> books = (List<Book>) bookServiceLocal.findByContainsInTitle(request.getParameter("search"));
+            //request.setAttribute("findedbook", books);
+            List<Book> books = bookServiceLocal.findAll()
+                    .stream()
+                    .filter(book -> book.getBookTitle().contains(request.getParameter("search")))
+                    .collect(Collectors.toList());
             request.setAttribute("findedbook", books);
-           if(!(books == null)){
-               RequestDispatcher requestDispatcher = request.getRequestDispatcher(Paths.SEARCHVIEW);
-               requestDispatcher.forward(request, response);
-            }else {
-                request.setAttribute("message", String.format("Unable to find book by the name of '%s'", request.getParameter("search")));
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher(Paths.USERVIEW);
-                requestDispatcher.forward(request,response);
-            }
+
+            request.setAttribute("message", String.format("Unable to find book by the name of '%s'", request.getParameter("search")));
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(Paths.SEARCHVIEW);
+            requestDispatcher.forward(request, response);
+
         } catch (ServletException | IOException e) {
             Logger.getLogger("SEARCH SERVLET").log(Level.INFO, e.getMessage());
 

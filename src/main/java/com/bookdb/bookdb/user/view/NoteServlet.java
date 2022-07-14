@@ -1,9 +1,8 @@
 package com.bookdb.bookdb.user.view;
 
-import com.bookdb.bookdb.ejb.user.entity.User;
+
 import com.bookdb.bookdb.ejb.user.notes.entity.Note;
 import com.bookdb.bookdb.ejb.user.notes.service.NoteServiceLocal;
-import com.bookdb.bookdb.ejb.user.service.UserServiceLocal;
 import com.bookdb.bookdb.paths.Paths;
 import com.bookdb.bookdb.user.session.Session;
 import jakarta.inject.Inject;
@@ -28,15 +27,26 @@ public class NoteServlet extends HttpServlet {
             String privilegeName = Session.USER.getFromSession(request).getPrivilegeId().getPrivilegeName();
 
             if(privilegeName.equalsIgnoreCase("admin")){
+
                 List<Note> allNotes = noteServiceLocal.findAll();
                 request.setAttribute("notelist", allNotes);
+
+                if (request.getParameter("findnote") == null){
+
+                    Note note = noteServiceLocal.find(1);
+                    request.setAttribute("findednote", note);
+                } else {
+                    Integer noteId = Integer.parseInt(request.getParameter("findnote"));
+                    Note note = noteServiceLocal.find(noteId);
+                    request.setAttribute("findednote",note);
+                }
+
                 RequestDispatcher toView = request.getRequestDispatcher(Paths.ADMINNOTE);
                 toView.forward(request,response);
             }
             else {
-                User user = Session.USER.getFromSession(request);
-                //zamjeniti findall sa drugom metodom
-                List <Note> notes = (List<Note>) noteServiceLocal.findAll();
+
+                List <Note> notes = (List<Note>) noteServiceLocal.findByUserId(Session.USER.getFromSession(request).getUserId());
                 request.setAttribute("notelist", notes);
 
                 RequestDispatcher toView = request.getRequestDispatcher(Paths.USERNOTE);

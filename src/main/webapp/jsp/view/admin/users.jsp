@@ -1,14 +1,10 @@
 <%@ page import="com.bookdb.bookdb.ejb.user.entity.User" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: Emir
-  Date: 04/07/2022
-  Time: 18:26
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.bookdb.bookdb.ejb.user.privilege.entity.Privilege" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
 </head>
 <body>
@@ -42,35 +38,59 @@
     </tbody>
 </table>
 </div>
+<div style="margin: 20px">
 
-
-<div>
     <h4>Find username :</h4>
-    <form action="" class="">
-        <div class="input-group mb-4">
-            <div class="col-sm-7">
-            <input type="text" class="form-control form-control-md" placeholder="Search Here">
-            <button type="submit" class="input-group-text btn-success"><i class="bi bi-search me-2"></i> Search</button>
-            </div>
-        </div>
-    </form>
+<form class="d-flex w-50" method="post" action="UserServlet">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="finduser">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
 </div>
-<div>
-    <%
-        User user = (User) request.getAttribute("founduser");
-    %>
-    <div class="row">
+
+<%
+    User user = (User) request.getAttribute("findeduser");
+%>
+<div style="margin: 20px">
+<form method="post" action="">
+    <div class="row mb-3">
+        <label  class="col-sm-2 col-form-label">User Id</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-        </div>
-        <div class="col-sm-2">
-            <input type="text" class="form-control" placeholder="Email" aria-label="Email">
-        </div>
-        <div class="col-sm-2">
-            <input type="text" class="form-control" placeholder="Privilege" aria-label="Privilege">
+            <input name="userid" type="text" class="form-control" value="<%= user != null ?user.getUserId():""%>" readonly>
         </div>
     </div>
-</div>
+    <div class="row mb-3">
+        <label  class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-2">
+            <input name="username" type="text" class="form-control" value="<%= user != null ?user.getUsername(): ""%>">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label  class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-2">
+            <input name="email" type="text" class="form-control" value="<%=user != null?user.getUserEmail():""%>" >
+        </div>
+    </div>
+    <fieldset class="row mb-3">
 
+        <legend class="col-form-label col-sm-2 pt-0">Privilege</legend>
+
+        <div class="col-sm-2">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="privilegeradio"  value="2" checked>
+                <label class="form-check-label" > User </label>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="privilegeradio"  value="1" >
+                <label class="form-check-label" > Admin </label>
+            </div>
+        </div>
+    </fieldset>
+
+            <button  type="submit" class="btn btn-primary" onclick="form.action = 'EditUserServlet';">Edit</button>
+            <button  type="submit" class="btn btn-primary" onclick="form.action = 'RemoveUserServlet';">Remove</button>
+</form>
+</div>
 </body>
 </html>

@@ -36,4 +36,21 @@ public class GenreService extends AbstractService<Genre> implements GenreService
         return genre;
     }
 
+    @Override
+    public Genre findByGenreName(String genreName) {
+       Genre genre = null;
+
+       try{
+           Query query = entityManager.createNamedQuery("Genres.findByName")
+                   .setParameter("genreName",genreName);
+                genre = (Genre) query.getSingleResult();
+           return genre;
+
+       }catch (NonUniqueResultException | NoResultException e) {
+            Logger.getLogger("GENRE BY NAME QUERY").log(Level.INFO, e.getMessage());
+
+       }
+        return genre;
+    }
+
 }

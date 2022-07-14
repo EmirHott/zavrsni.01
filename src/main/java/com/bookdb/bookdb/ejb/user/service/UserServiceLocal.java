@@ -24,9 +24,9 @@ public interface UserServiceLocal {
 
     User login(LogInModel logInModel);
 
-    public User findByUsername(String username);
+    User findByUsername(String username);
 
-    public User findLastId();
+    User findLastId();
 
 
 }

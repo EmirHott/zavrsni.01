@@ -15,6 +15,7 @@ import java.util.Objects;
         @NamedQuery(name = "Notes.findAll", query = "SELECT n FROM Note n"),
         @NamedQuery(name = "Notes.findById", query = "SELECT n FROM Note n WHERE n.noteId = :noteId"),
         @NamedQuery(name = "Notes.findLast", query = "SELECT n FROM Note n ORDER BY n.noteId DESC "),
+        @NamedQuery(name = "Notes.findByUserId", query = "SELECT n FROM Note n WHERE n.userId = :userId")
 
 })
 public class Note implements Serializable {

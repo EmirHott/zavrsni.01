@@ -51,15 +51,25 @@ public class BookServlet extends HttpServlet {
 
                 List<Genre> genres = genreServiceLocal.findAll();
                 request.setAttribute("genrelist", genres);
+                String noteToFind = request.getParameter("findgenre");
+                Genre genre = genreServiceLocal.findByGenreName(noteToFind);
+                request.setAttribute("findedgenre",genre);
+
 
                 List<Author> authors = authorServiceLocal.findAll();
                 request.setAttribute("authorlist",authors);
+                String authorToFind = request.getParameter("findauthor");
+                Author author = authorServiceLocal.findByName(authorToFind);
+                request.setAttribute("findedauthor", author);
 
                 List<BookImg> bookImgs = bookImgServiceLocal.findAll();
                 request.setAttribute("bookimglist", bookImgs);
 
                 List<Publisher> publishers = publisherServiceLocal.findAll();
                 request.setAttribute("publisherlist",publishers);
+                String publisherToFind = request.getParameter("findpublisher");
+                Publisher publisher = publisherServiceLocal.findByName(publisherToFind);
+                request.setAttribute("findedpublisher",publisher);
 
 
 
