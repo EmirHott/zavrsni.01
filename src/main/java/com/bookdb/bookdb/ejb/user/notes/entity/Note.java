@@ -14,6 +14,7 @@ import java.util.Objects;
 @NamedQueries({
         @NamedQuery(name = "Notes.findAll", query = "SELECT n FROM Note n"),
         @NamedQuery(name = "Notes.findById", query = "SELECT n FROM Note n WHERE n.noteId = :noteId"),
+        @NamedQuery(name = "Notes.findByTitle", query = "SELECT n FROM Note n WHERE n.noteTitle = :noteTitle"),
         @NamedQuery(name = "Notes.findLast", query = "SELECT n FROM Note n ORDER BY n.noteId DESC "),
         @NamedQuery(name = "Notes.findByUserId", query = "SELECT n FROM Note n WHERE n.userId = :userId")
 
@@ -37,6 +38,10 @@ public class Note implements Serializable {
     @JoinColumn(name = "status_id", referencedColumnName = "status_id")
     @ManyToOne
     private Status statusId;
+    @Basic(optional = false)
+    @Size(max = 45)
+    @Column(name = "note_title")
+    private String noteTitle;
 
     public Note() {
     }
@@ -79,6 +84,14 @@ public class Note implements Serializable {
 
     public void setStatusId(Status statusId) {
         this.statusId = statusId;
+    }
+
+    public String getNoteTitle() {
+        return noteTitle;
+    }
+
+    public void setNoteTitle(String noteTitle) {
+        this.noteTitle = noteTitle;
     }
 
     @Override

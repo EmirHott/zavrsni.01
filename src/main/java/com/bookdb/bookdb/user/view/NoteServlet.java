@@ -1,8 +1,13 @@
 package com.bookdb.bookdb.user.view;
 
 
+import com.bookdb.bookdb.ejb.books.entity.Book;
+import com.bookdb.bookdb.ejb.books.service.BookServiceLocal;
+import com.bookdb.bookdb.ejb.user.entity.User;
 import com.bookdb.bookdb.ejb.user.notes.entity.Note;
 import com.bookdb.bookdb.ejb.user.notes.service.NoteServiceLocal;
+import com.bookdb.bookdb.ejb.user.notes.status.entity.Status;
+import com.bookdb.bookdb.ejb.user.notes.status.service.StatusServiceLocal;
 import com.bookdb.bookdb.paths.Paths;
 import com.bookdb.bookdb.user.session.Session;
 import jakarta.inject.Inject;
@@ -19,6 +24,10 @@ import java.util.logging.Logger;
 public class NoteServlet extends HttpServlet {
     @Inject
     NoteServiceLocal noteServiceLocal;
+    @Inject
+    StatusServiceLocal statusServiceLocal;
+    @Inject
+    BookServiceLocal bookServiceLocal;
 
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -45,9 +54,18 @@ public class NoteServlet extends HttpServlet {
                 toView.forward(request,response);
             }
             else {
-
-                List <Note> notes = (List<Note>) noteServiceLocal.findByUserId(Session.USER.getFromSession(request).getUserId());
+                User userInSession = Session.USER.getFromSession(request);
+                List <Note> notes = (List<Note>) noteServiceLocal.findByUserId(userInSession);
                 request.setAttribute("notelist", notes);
+                Note note = noteServiceLocal.findByTitle(request.getParameter("findnote"));
+                request.setAttribute("findednote",note);
+
+                List<Status> statusList = statusServiceLocal.findAll();
+                request.setAttribute("statuslist",statusList);
+
+                List<Book> bookList = bookServiceLocal.findAll();
+                request.setAttribute("booklist",bookList);
+
 
                 RequestDispatcher toView = request.getRequestDispatcher(Paths.USERNOTE);
                 toView.forward(request, response);

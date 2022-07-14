@@ -1,9 +1,11 @@
 package com.bookdb.bookdb.ejb.user.notes.service;
 
 import com.bookdb.bookdb.ejb.AbstractService;
+import com.bookdb.bookdb.ejb.user.entity.User;
 import com.bookdb.bookdb.ejb.user.notes.entity.Note;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
+
 
 import java.util.List;
 import java.util.logging.Level;
@@ -38,18 +40,34 @@ public class NoteService extends AbstractService<Note> implements NoteServiceLoc
     }
 
     @Override
-    public List<Note> findByUserId(Integer userId) {
+    public List<Note> findByUserId(User user) {
        List<Note> notes = null;
 
        try{
            Query query = entityManager.createNamedQuery("Notes.findByUserId")
-                   .setParameter("userId", userId);
+                   .setParameter("userId", user);
+           notes = (List<Note>) query.getResultList();
            return notes;
 
        }catch (NonUniqueResultException | NoResultException e){
            Logger.getLogger("NOTES BY USERID QUERY").log(Level.INFO,e.getMessage());
        }
         return notes;
+    }
+
+    @Override
+    public Note findByTitle(String noteTitle) {
+        Note note = null;
+
+        try{
+            Query query = entityManager.createNamedQuery("Notes.findByTitle")
+                    .setParameter("noteTitle",noteTitle);
+            note = (Note) query.getSingleResult();
+            return note;
+        }catch (NonUniqueResultException | NoResultException e){
+            Logger.getLogger("NOTE FIND BY TITLE QUERY").log(Level.INFO,e.getMessage());
+        }
+        return note;
     }
 
 

@@ -239,9 +239,9 @@
                     <input name="bookimgurl" type="text" class="form-control" value="<%= bookImg != null ?bookImg.getImgPath(): ""%>">
                 </div>
             </div>
-            <button  type="submit" class="btn btn-primary" onclick="form.action = '';">Add</button>
-            <button  type="submit" class="btn btn-primary" onclick="form.action = '';">Edit</button>
-            <button  type="submit" class="btn btn-primary" onclick="form.action = '';">Remove</button>
+            <button  type="submit" class="btn btn-primary" onclick="form.action = 'AddBookImgServlet';">Add</button>
+            <button  type="submit" class="btn btn-primary" onclick="form.action = 'EditBookImgServlet';">Edit</button>
+            <button  type="submit" class="btn btn-primary" onclick="form.action = 'RemoveBookImgServlet';">Remove</button>
         </form>
     </div>
 

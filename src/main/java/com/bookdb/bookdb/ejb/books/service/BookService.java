@@ -31,6 +31,7 @@ public class BookService extends AbstractService<Book> implements BookServiceLoc
         try {
             Query query = entityManager.createNamedQuery("Book.findContainInTitle")
                     .setParameter("text","%"+ text + "%");
+            books =(List<Book>) query.getResultList();
             return books;
         } catch (NonUniqueResultException | NoResultException e) {
             Logger.getLogger("BOOK TITLE QUERY").log(Level.INFO, e.getMessage());

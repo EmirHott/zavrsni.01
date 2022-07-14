@@ -13,9 +13,7 @@
 <body  class="d-flex flex-column min-vh-100">
 <jsp:include page="usernav.jsp"></jsp:include>
 
-<div>
-    <h4 style="color: red"><%=request.getAttribute("message")==null?"":request.getAttribute("message")%></h4>
-</div>
+
 
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">

@@ -26,10 +26,10 @@
           <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/jsp/view/user/userview.jsp">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About us</a>
+          <a class="nav-link" href="#aboutus">About us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contacts</a>
+          <a class="nav-link" href="#contacts">Contacts</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${pageContext.request.contextPath}/BookServlet">Books</a>
@@ -45,8 +45,10 @@
       </ul>
       </span>
       <form class="d-flex" method="post" action="SearchServlet" name="search">
-        <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary" type="submit">Search</button>
+       <div>
+        <input name="search" class="form-control me-2 w-40" type="search" placeholder="<%=request.getAttribute("message")==null?"Search":request.getAttribute("message")%>" aria-label="Search">
+       </div>
+         <button class="btn btn-outline-primary" type="submit">Search</button>
       </form>
     </div>
   </div>
