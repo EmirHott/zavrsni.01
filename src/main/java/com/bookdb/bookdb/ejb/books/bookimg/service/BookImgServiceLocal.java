@@ -18,4 +18,6 @@ public interface BookImgServiceLocal {
     BookImg find(Object id);
 
     List<BookImg> findAll();
+
+    BookImg finByName (String bookImgName);
 }

@@ -11,6 +11,7 @@ import java.util.Objects;
 @Table (name = "books_img")
 @NamedQueries({
         @NamedQuery( name = "BookImg.findAll", query = "SELECT b FROM BookImg b"),
+        @NamedQuery( name = "BookImg.findByName", query = "SELECT b FROM BookImg b WHERE b.bookImgName = :bookImgName"),
         @NamedQuery(name = "BookImg.findById", query = "SELECT b FROM BookImg b WHERE b.bookImgId = :bookImgId"),
         @NamedQuery(name = "BookImg.findByImgPath", query = "SELECT b FROM BookImg b WHERE b.imgPath = :imgPath")
 })
@@ -24,6 +25,9 @@ public class BookImg implements Serializable {
     private Integer bookImgId;
     @Column(name = "book_img")
     private String imgPath;
+
+    @Column(name ="book_img_name")
+    private String bookImgName;
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "bookImgId")
     private List<Book> bookList;
 
@@ -45,6 +49,15 @@ public class BookImg implements Serializable {
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
     }
+
+    public String getBookImgName() {
+        return bookImgName;
+    }
+
+    public void setBookImgName(String bookImgName) {
+        this.bookImgName = bookImgName;
+    }
+
     @Transient
     public List<Book> getBookList() {
         return bookList;

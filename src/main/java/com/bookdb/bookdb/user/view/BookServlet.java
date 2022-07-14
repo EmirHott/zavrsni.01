@@ -64,6 +64,9 @@ public class BookServlet extends HttpServlet {
 
                 List<BookImg> bookImgs = bookImgServiceLocal.findAll();
                 request.setAttribute("bookimglist", bookImgs);
+                String bookImgToFind = request.getParameter("findbookimg");
+                BookImg bookImg = bookImgServiceLocal.finByName(bookImgToFind);
+                request.setAttribute("findedbookimg",bookImg);
 
                 List<Publisher> publishers = publisherServiceLocal.findAll();
                 request.setAttribute("publisherlist",publishers);

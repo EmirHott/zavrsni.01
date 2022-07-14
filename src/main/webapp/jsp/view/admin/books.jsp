@@ -189,6 +189,7 @@
         <thead>
         <tr>
             <th scope="col">Id</th>
+            <th scope="col">Book Image Name</th>
             <th scope="col">Image URL</th>
         </thead>
         <%
@@ -199,11 +200,53 @@
         <tbody>
         <tr>
             <td><%=bookImg.getBookImgId()%></td>
+            <td><%=bookImg.getBookImgName()%></td>
             <td><%=bookImg.getImgPath()%></td>
         </tr>
         <%}%>
         </tbody>
     </table>
+
+
+    <div style="margin: 20px">
+        <h4>Find Image by name :</h4>
+        <form class="d-flex w-50" method="post" action="BookServlet">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="findbookimg">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+    <%
+        BookImg bookImg = (BookImg) request.getAttribute("findedbookimg");
+    %>
+
+    <div style="margin: 20px">
+        <form method="post" action="">
+            <div class="row mb-3">
+                <label  class="col-sm-2 col-form-label">Book Image Id</label>
+                <div class="col-sm-2">
+                    <input name="bookimgid" type="text" class="form-control" value="<%= bookImg != null ?bookImg.getBookImgId():""%>" readonly>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label  class="col-sm-2 col-form-label">Book Image Name</label>
+                <div class="col-sm-2">
+                    <input name="bookimgname" type="text" class="form-control" value="<%= bookImg != null ?bookImg.getBookImgName(): ""%>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label  class="col-sm-2 col-form-label">Book Image URL</label>
+                <div class="col-sm-6">
+                    <input name="bookimgurl" type="text" class="form-control" value="<%= bookImg != null ?bookImg.getImgPath(): ""%>">
+                </div>
+            </div>
+            <button  type="submit" class="btn btn-primary" onclick="form.action = '';">Add</button>
+            <button  type="submit" class="btn btn-primary" onclick="form.action = '';">Edit</button>
+            <button  type="submit" class="btn btn-primary" onclick="form.action = '';">Remove</button>
+        </form>
+    </div>
+
+
+
 </div>
 <h4 style="text-align: center; font-family: sans-serif, bold; margin-top: 20px;" >Publishers in Database:</h4>
 <div  class="table-responsive-md" style="margin: 30px">
@@ -255,8 +298,8 @@
             </div>
         </div>
         <button  type="submit" class="btn btn-primary" onclick="form.action = 'AddPublisherServlet';">Add</button>
-        <button  type="submit" class="btn btn-primary" onclick="form.action = '';">Edit</button>
-        <button  type="submit" class="btn btn-primary" onclick="form.action = '';">Remove</button>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = 'EditPublisherServlet';">Edit</button>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = 'RemovePublisherServlet';">Remove</button>
     </form>
 </div>
 
