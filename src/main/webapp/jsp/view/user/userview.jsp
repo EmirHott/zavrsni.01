@@ -18,13 +18,13 @@
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="https://s26162.pcdn.co/wp-content/uploads/2022/05/Best-Reviewed-Books.jpeg" class="d-block w-100 h-50" alt="...">
+            <img src="https://st1.latestly.com/wp-content/uploads/2020/04/International-Day-of-the-Book-2020-quotes.jpg" class="d-block w-100 h-50" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
+            <img src="https://st1.latestly.com/wp-content/uploads/2020/04/Book-quotes.jpg" class="d-block w-100 h-50" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
+            <img src="https://st1.latestly.com/wp-content/uploads/2020/04/World-Book-Day-quotes-2.jpg" class="d-block w-100 h-50" alt="...">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
