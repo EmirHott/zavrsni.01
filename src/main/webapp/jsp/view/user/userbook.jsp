@@ -26,7 +26,7 @@
             <div class="card-body">
                 <h5 class="card-title"><%=book.getBookTitle()%></h5>
                 <p class="card-text"><%=book.getAuthorList()%></p>
-                <p class="card-text">Book rating : <%=book.getBookRating()%></p>
+                <p class="card-text">Book Info : <%=book.getBookInfo()%></p>
             </div>
         </div>
     </div>
