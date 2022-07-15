@@ -44,7 +44,7 @@
     <div style="margin: 20px">
 
         <h4>Find note by id :</h4>
-        <form class="d-flex w-50" method="post" action="NoteServlet">
+        <form class="d-flex p-3 bg-light w-50" method="post" action="NoteServlet">
             <input class="form-control me-2" type="number" placeholder="Search" aria-label="Search" name="findnote">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
@@ -54,7 +54,7 @@
         Note note = (Note) request.getAttribute("findednote");
     %>
     <div style="margin: 20px">
-        <form method="post" action="">
+        <form class="p-3 bg-light" method="post" action="">
             <div class="row mb-3">
                 <label  class="col-sm-2 col-form-label">Note Id</label>
                 <div class="col-sm-2">

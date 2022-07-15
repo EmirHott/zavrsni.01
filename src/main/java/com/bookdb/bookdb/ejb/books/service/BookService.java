@@ -46,7 +46,23 @@ public class BookService extends AbstractService<Book> implements BookServiceLoc
             Query query =entityManager.createNamedQuery("Book.findLast").setMaxResults(1);
             book = (Book) query.getSingleResult();
         }catch(NonUniqueResultException | NoResultException e){
-            Logger.getLogger("LAST ID QUERY").log(Level.INFO,e.getMessage());
+            Logger.getLogger("FIN BOOK LAST ID QUERY").log(Level.INFO,e.getMessage());
+
+        }
+        return book;
+    }
+
+    @Override
+    public Book findByTitle(String bookTitle) {
+        Book book =null;
+
+        try{
+            Query query = entityManager.createNamedQuery("Book.findByTitle")
+                    .setParameter("bookTitle",bookTitle);
+            book = (Book) query.getSingleResult();
+            return book;
+        }catch(NonUniqueResultException | NoResultException e){
+            Logger.getLogger("FIND BOOK BY TITLE QUERY").log(Level.INFO,e.getMessage());
 
         }
         return book;

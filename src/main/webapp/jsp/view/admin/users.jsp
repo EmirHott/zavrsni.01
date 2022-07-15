@@ -41,7 +41,7 @@
 <div style="margin: 20px">
 
     <h4>Find username :</h4>
-<form class="d-flex w-50" method="post" action="UserServlet">
+<form class="d-flex p-3 bg-light w-50" method="post" action="UserServlet">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="finduser">
     <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
@@ -51,7 +51,7 @@
     User user = (User) request.getAttribute("findeduser");
 %>
 <div style="margin: 20px">
-<form method="post" action="">
+<form class="p-3 bg-light" method="post" action="">
     <div class="row mb-3">
         <label  class="col-sm-2 col-form-label">User Id</label>
         <div class="col-sm-2">

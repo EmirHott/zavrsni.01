@@ -3,13 +3,8 @@
 <%@ page import="com.bookdb.bookdb.ejb.books.genre.entity.Genre" %>
 <%@ page import="com.bookdb.bookdb.ejb.books.author.entity.Author" %>
 <%@ page import="com.bookdb.bookdb.ejb.books.bookimg.entity.BookImg" %>
-<%@ page import="com.bookdb.bookdb.ejb.books.publisher.entity.Publisher" %><%--
-  Created by IntelliJ IDEA.
-  User: Emir
-  Date: 04/07/2022
-  Time: 19:09
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.bookdb.bookdb.ejb.books.publisher.entity.Publisher" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -59,6 +54,130 @@
     </table>
 </div>
 
+<div style="margin: 20px">
+
+<h4>Find Book by Title :</h4>
+<form class="d-flex w-50 p-3 bg-light " method="post" action="BookServlet">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="findbook">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+</div>
+
+<%
+
+    Book book = (Book) request.getAttribute("findedbook");
+%>
+<div style="margin: 20px">
+    <form class="p-3 bg-light" method="post" action="">
+
+        <div class="row mb-3">
+            <label  class="col-sm-2 col-form-label" >Book Id</label>
+            <div class="col-sm-2">
+                <input name="bookid" type="text" class="form-control" value="<%= book != null ? book.getBookId():""%>" readonly>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label  class="col-sm-2 col-form-label" >Book Title</label>
+            <div class="col-sm-2">
+                <input name="booktitle" type="text" class="form-control" value="<%= book != null ?book.getBookTitle():""%>">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label  class="col-sm-2 col-form-label">Book Page number</label>
+            <div class="col-sm-2">
+                <input name="bookpages" type="text" class="form-control" value="<%= book != null ?book.getBookPages(): ""%>">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label  class="col-sm-2 col-form-label">Book Rating</label>
+            <div class="col-sm-2">
+                <input name="bookrating" type="text" class="form-control" value="<%= book != null ?book.getBookRating(): ""%>">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label  class="col-sm-2 col-form-label">Book Publication Date</label>
+            <div class="col-sm-2">
+                <input name="bookdate" type="text" class="form-control" value="<%= book != null ?book.getBookPublicationDate(): ""%>">
+            </div>
+        </div>
+
+        <label  class="col-sm-2 col-form-label">Genre</label>
+            <%
+                List<Genre> genres = (List<Genre>) request.getAttribute("genrelist");
+                for(Genre genre : genres){
+            %>
+        <div class="form-check form-check-inline row mb-3">
+            <div class="col-sm-2">
+            <input name="bookgenreid" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="<%=genre.getGenreId()%>">
+            <label name="bookgenrename" class="form-check-label" for="inlineCheckbox1"><%=genre.getGenreName()%></label>
+            </div>
+        </div>
+        <%}%>
+
+
+        <%
+            List<Publisher> publishers = (List<Publisher>) request.getAttribute("publisherlist");
+        %>
+        <div class="input-group mb-3" style="margin-top: 10px">
+            <label class="input-group-text" >Publishers</label>
+            <select name="bookpublisherid" class="form-select w-50" >
+                <option  selected>Choose...</option>
+                <%
+                    for(Publisher publisher : publishers){
+                %>
+                <option  value=<%=publisher.getPublisherId()%>><%=publisher.getPublisherName()%></option>
+                <%}%>
+            </select>
+            </div>
+
+
+
+        <%
+            List<BookImg> bookImgs = (List<BookImg>) request.getAttribute("bookimglist");
+        %>
+        <div class="input-group mb-3" style="margin-top: 10px">
+            <label class="input-group-text" for="inputGroupSelect01">Book Image</label>
+            <select name="bookimgid" class="form-select w-50" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <%
+                    for(BookImg bookImg : bookImgs){
+                %>
+                <option  value=<%=bookImg.getBookImgId()%>><%=bookImg.getBookImgName()%></option>
+                <%}%>
+            </select>
+        </div>
+
+
+        <%
+            List<Author> authors = (List<Author>) request.getAttribute("authorlist");
+        %>
+        <div class="input-group mb-3" style="margin-top: 10px">
+            <label class="input-group-text" for="inputGroupSelect02">Authors</label>
+            <select name="bookauthorid" class="form-select w-50" id="inputGroupSelect02">
+                <option selected>Choose...</option>
+                <%
+                    for(Author author : authors){
+                %>
+                <option value=<%=author.getAuthorId()%>><%=author.getAuthorName()%> <%=author.getAuthorSurname()%></option>
+                <%}%>
+            </select>
+        </div>
+            <div class="input-group" style="margin-top: 10px">
+                <span class="input-group-text">Note content</span>
+                <textarea name="bookinfo" class="form-control" aria-label="With textarea"><%=book != null? book.getBookInfo():""%></textarea>
+            </div>
+
+
+
+        <button  type="submit" class="btn btn-primary" onclick="form.action = 'AddBookServlet';">Add</button>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = 'EditBookServlet';">Edit</button>
+        <button  type="submit" class="btn btn-primary" onclick="form.action = 'RemoveBookServlet';">Remove</button>
+    </form>
+</div>
+
+
+
+
 <h4 style="text-align: center; font-family: sans-serif, bold; margin-top: 20px;" >Genres in Database:</h4>
 <div  class="table-responsive-md" style="margin: 30px">
     <table class="table table-hover">
@@ -85,7 +204,7 @@
 
 <div style="margin: 20px">
 <h4>Find Genre by name :</h4>
-<form class="d-flex w-50" method="post" action="BookServlet">
+<form class="d-flex p-3 bg-light w-50" method="post" action="BookServlet">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="findgenre">
     <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
@@ -95,7 +214,7 @@
 %>
 
 <div style="margin: 20px">
-    <form method="post" action="">
+    <form class="p-3 bg-light" method="post" action="">
         <div class="row mb-3">
             <label  class="col-sm-2 col-form-label">Genre Id</label>
             <div class="col-sm-2">
@@ -117,7 +236,7 @@
 
 
 
-<h4 style="text-align: center; font-family: sans-serif, bold; margin-top: 20px;" >Authors in Database:</h4>
+<h4 style="text-align: center; font-family: sans-serif, bold; margin-top: 20px;" > Authors in Database:</h4>
 <div  class="table-responsive-md" style="margin: 30px">
     <table class="table table-hover">
         <thead>
@@ -144,7 +263,7 @@
 
 <div style="margin: 20px">
     <h4>Find Author by name :</h4>
-    <form class="d-flex w-50" method="post" action="BookServlet">
+    <form class="d-flex p-3 bg-light w-50" method="post" action="BookServlet">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="findauthor">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
@@ -154,7 +273,7 @@
 %>
 
 <div style="margin: 20px">
-    <form method="post" action="">
+    <form class="p-3 bg-light" method="post" action="">
         <div class="row mb-3">
             <label  class="col-sm-2 col-form-label">Author Id</label>
             <div class="col-sm-2">
@@ -210,7 +329,7 @@
 
     <div style="margin: 20px">
         <h4>Find Image by name :</h4>
-        <form class="d-flex w-50" method="post" action="BookServlet">
+        <form class="d-flex p-3 bg-light w-50" method="post" action="BookServlet">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="findbookimg">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
@@ -220,7 +339,7 @@
     %>
 
     <div style="margin: 20px">
-        <form method="post" action="">
+        <form class="p-3 bg-light" method="post" action="">
             <div class="row mb-3">
                 <label  class="col-sm-2 col-form-label">Book Image Id</label>
                 <div class="col-sm-2">
@@ -274,7 +393,7 @@
 
 <div style="margin: 20px">
     <h4>Find Publisher by name :</h4>
-    <form class="d-flex w-50" method="post" action="BookServlet">
+    <form class="d-flex p-3 bg-light w-50" method="post" action="BookServlet">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="findpublisher">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
@@ -284,7 +403,7 @@
 %>
 
 <div style="margin: 20px">
-    <form method="post" action="">
+    <form class="p-3 bg-light" method="post" action="">
         <div class="row mb-3">
             <label  class="col-sm-2 col-form-label">Publisher Id</label>
             <div class="col-sm-2">

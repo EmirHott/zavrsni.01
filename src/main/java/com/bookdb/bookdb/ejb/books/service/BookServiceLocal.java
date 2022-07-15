@@ -19,6 +19,8 @@ public interface BookServiceLocal {
 
    List<Book> findByContainsInTitle(String text);
 
-     Book findLastId();
+   Book findLastId();
+
+   Book findByTitle(String bookTitle);
 }
 

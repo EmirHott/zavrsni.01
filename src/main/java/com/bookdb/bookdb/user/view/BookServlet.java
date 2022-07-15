@@ -49,6 +49,11 @@ public class BookServlet extends HttpServlet {
 
             if(privilegeName.equalsIgnoreCase("admin")){
 
+                String bookToFind = request.getParameter("findbook");
+                Book book = bookServiceLocal.findByTitle(bookToFind);
+                request.setAttribute("findedbook", book);
+
+
                 List<Genre> genres = genreServiceLocal.findAll();
                 request.setAttribute("genrelist", genres);
                 String noteToFind = request.getParameter("findgenre");
