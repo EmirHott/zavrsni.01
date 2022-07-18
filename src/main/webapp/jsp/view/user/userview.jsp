@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.bookdb.bookdb.ejb.books.entity.Book" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Emir
   Date: 04/07/2022
@@ -8,35 +9,46 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>BooKDB</title>
 </head>
 <body  class="d-flex flex-column min-vh-100">
 <jsp:include page="usernav.jsp"></jsp:include>
 
 
-
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="https://st1.latestly.com/wp-content/uploads/2020/04/International-Day-of-the-Book-2020-quotes.jpg" class="d-block w-100 h-50" alt="...">
+        <div class="carousel-item active " data-bs-interval="10000">
+            <img src="https://i.ibb.co/vk8bNjq/qoute1.jpg" class="d-block w-100 " alt="..." >
         </div>
-        <div class="carousel-item">
-            <img src="https://st1.latestly.com/wp-content/uploads/2020/04/Book-quotes.jpg" class="d-block w-100 h-50" alt="...">
+        <div class="carousel-item" data-bs-interval="10000">
+            <img src="https://i.ibb.co/FVznf4k/qoute2.jpg" class="d-block w-100" alt="...">
         </div>
-        <div class="carousel-item">
-            <img src="https://st1.latestly.com/wp-content/uploads/2020/04/World-Book-Day-quotes-2.jpg" class="d-block w-100 h-50" alt="...">
+        <div class="carousel-item" data-bs-interval="10000">
+            <img src="https://i.ibb.co/NFXtty5/qoute3.jpg" class="d-block w-100" alt="...">
         </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
 </div>
 
+<h2 style="text-align: center; font-family: Arial; margin-bottom: 20px; margin-top: 40px;">Our recommendation:</h2>
+
+<div class="row row-cols-1 row-cols-md-4 g-4" style="margin: 10px">
+
+    <%
+        List<Book> bookList = (List<Book>) request.getAttribute("booklist");
+        for (Book book : bookList ) {
+    %>
+    <div class="col-md-3 text-center">
+        <div class="card h-100 ">
+            <img src="<%=book.getBookImgId().getImgPath()%>" class="card-img-top img-fluid mx-auto d-block " alt="..." style="height: 50%; width: 50%;padding-top: 50px;">
+            <div class="card-body">
+                <h5 class="card-title"><%=book.getBookTitle()%></h5>
+                <p class="card-text"><%=book.getAuthorList()%></p>
+                <p class="card-text">Book Info : <%=book.getBookInfo()%></p>
+            </div>
+        </div>
+    </div>
+    <%}%>
+</div>
 
 <jsp:include page="../footer.jsp"></jsp:include>
 </body>

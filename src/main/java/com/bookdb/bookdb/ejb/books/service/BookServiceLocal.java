@@ -22,5 +22,7 @@ public interface BookServiceLocal {
    Book findLastId();
 
    Book findByTitle(String bookTitle);
+
+   List<Book> findOnlyFour();
 }
 

@@ -15,8 +15,9 @@ public class LogOutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response){
        try {
            HttpSession session = request.getSession();
-           response.setHeader("Cache-Control", "no-cache, no-store");
+           response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
            response.setHeader("Pragma", "no-cache");
+           response.setHeader("Expires","0");
            session.invalidate();
            RequestDispatcher toLogIn = request.getRequestDispatcher(Paths.TOLOGIN);
            toLogIn.forward(request, response);

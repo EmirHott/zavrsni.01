@@ -20,6 +20,7 @@ import jakarta.servlet.annotation.*;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -60,6 +61,8 @@ public class ToViewServlet extends HttpServlet {
                 RequestDispatcher toView = request.getRequestDispatcher(Paths.ADMINVIEW);
                 toView.forward(request, response);
             } else {
+                List<Book> bookList = bookServiceLocal.findOnlyFour();
+                request.setAttribute("booklist",bookList);
                 RequestDispatcher toView = request.getRequestDispatcher(Paths.USERVIEW);
                 toView.forward(request, response);
 

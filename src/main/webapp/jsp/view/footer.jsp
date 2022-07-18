@@ -12,9 +12,8 @@
             <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
                 <h5 id="aboutus" class="text-uppercase">About us</h5>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-                    molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-                    voluptatem veniam, est atque cumque eum delectus sint!
+                    The BookDB Library provides you with access to an amazing range of online resources to explore the subjects you are passionate about.
+                    We will also help you to keep track of books u read.
                 </p>
             </div>
 

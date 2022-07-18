@@ -3,7 +3,7 @@
 <html>
 <head>
     <link href="${pageContext.request.contextPath}/css/signandlogin.css" rel="stylesheet" type="text/css">
-    <title>Sign Up</title>
+    <title>BookDB-Sign Up</title>
 </head>
 <body>
 <div class="form">

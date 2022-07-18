@@ -1,11 +1,10 @@
 <%@ page import="com.bookdb.bookdb.ejb.user.entity.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.bookdb.bookdb.ejb.user.privilege.entity.Privilege" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>BookDB-User</title>
 </head>
 <body>
 

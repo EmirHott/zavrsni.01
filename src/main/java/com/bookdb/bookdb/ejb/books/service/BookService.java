@@ -67,4 +67,19 @@ public class BookService extends AbstractService<Book> implements BookServiceLoc
         }
         return book;
     }
+
+    @Override
+    public List<Book> findOnlyFour() {
+        List<Book> bookList = null;
+        try{
+            Query query = entityManager.createNamedQuery("Book.findAll")
+                    .setMaxResults(4);
+            bookList = (List<Book>) query.getResultList();
+            return bookList;
+        }catch (NonUniqueResultException | NoResultException e){
+            Logger.getLogger("FIND 4 BOOKS QUERY").log(Level.INFO,e.getMessage());
+        }
+        return bookList;
+
+    }
 }

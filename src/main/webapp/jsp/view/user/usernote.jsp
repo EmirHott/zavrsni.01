@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>BookDB-Note</title>
 </head>
 <body  class="d-flex flex-column min-vh-100">
 <jsp:include page="usernav.jsp"></jsp:include>
