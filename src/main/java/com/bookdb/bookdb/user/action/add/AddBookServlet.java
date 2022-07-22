@@ -28,15 +28,15 @@ import java.util.logging.Logger;
 public class AddBookServlet extends HttpServlet {
 
     @Inject
-    BookServiceLocal bookServiceLocal;
+    private BookServiceLocal bookServiceLocal;
     @Inject
-    BookImgServiceLocal bookImgServiceLocal;
+    private BookImgServiceLocal bookImgServiceLocal;
     @Inject
-    AuthorServiceLocal authorServiceLocal;
+    private AuthorServiceLocal authorServiceLocal;
     @Inject
-    PublisherServiceLocal publisherServiceLocal;
+    private PublisherServiceLocal publisherServiceLocal;
     @Inject
-    GenreServiceLocal genreServiceLocal;
+    private GenreServiceLocal genreServiceLocal;
 
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {

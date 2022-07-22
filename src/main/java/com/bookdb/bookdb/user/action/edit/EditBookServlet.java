@@ -26,15 +26,15 @@ import java.util.logging.Logger;
 @WebServlet(name = "EditBookServlet", value = "/EditBookServlet")
 public class EditBookServlet extends HttpServlet {
     @Inject
-    BookServiceLocal bookServiceLocal;
+    private BookServiceLocal bookServiceLocal;
     @Inject
-    BookImgServiceLocal bookImgServiceLocal;
+    private BookImgServiceLocal bookImgServiceLocal;
     @Inject
-    AuthorServiceLocal authorServiceLocal;
+    private AuthorServiceLocal authorServiceLocal;
     @Inject
-    PublisherServiceLocal publisherServiceLocal;
+    private PublisherServiceLocal publisherServiceLocal;
     @Inject
-    GenreServiceLocal genreServiceLocal;
+    private GenreServiceLocal genreServiceLocal;
 
 
     private void processRequest (HttpServletRequest request, HttpServletResponse response){

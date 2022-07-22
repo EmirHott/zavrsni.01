@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class LogInServlet extends HttpServlet {
 
     @Inject
-    UserServiceLocal userServiceLocal;
+    private UserServiceLocal userServiceLocal;
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         try {

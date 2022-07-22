@@ -27,15 +27,15 @@ import java.util.logging.Logger;
 public class BookServlet extends HttpServlet {
 
     @Inject
-    BookServiceLocal bookServiceLocal;
+    private BookServiceLocal bookServiceLocal;
     @Inject
-    GenreServiceLocal genreServiceLocal;
+    private GenreServiceLocal genreServiceLocal;
     @Inject
-    AuthorServiceLocal authorServiceLocal;
+    private AuthorServiceLocal authorServiceLocal;
     @Inject
-    BookImgServiceLocal bookImgServiceLocal;
+    private BookImgServiceLocal bookImgServiceLocal;
     @Inject
-    PublisherServiceLocal publisherServiceLocal;
+    private PublisherServiceLocal publisherServiceLocal;
 
 
 

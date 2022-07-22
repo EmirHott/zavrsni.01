@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 @WebServlet(name = "HomeDispatcherServlet", value = "/HomeDispatcherServlet")
 public class HomeDispatcherServlet extends HttpServlet {
     @Inject
-    BookServiceLocal bookServiceLocal;
+    private BookServiceLocal bookServiceLocal;
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
 

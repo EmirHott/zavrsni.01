@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class RemoveGenreServlet extends HttpServlet {
 
     @Inject
-    GenreServiceLocal genreServiceLocal;
+    private GenreServiceLocal genreServiceLocal;
 
     private void processRequest (HttpServletRequest request, HttpServletResponse response){
 

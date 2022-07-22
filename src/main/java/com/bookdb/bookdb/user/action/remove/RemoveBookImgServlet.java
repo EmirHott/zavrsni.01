@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class RemoveBookImgServlet extends HttpServlet {
 
     @Inject
-    BookImgServiceLocal bookImgServiceLocal;
+    private BookImgServiceLocal bookImgServiceLocal;
 
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response){

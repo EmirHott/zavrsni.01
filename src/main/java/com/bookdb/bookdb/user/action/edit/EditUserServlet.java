@@ -19,9 +19,9 @@ import java.util.logging.Logger;
 public class EditUserServlet extends HttpServlet {
 
     @Inject
-    UserServiceLocal userServiceLocal;
+    private UserServiceLocal userServiceLocal;
     @Inject
-    PrivilegeServiceLocal privilegeServiceLocal;
+    private PrivilegeServiceLocal privilegeServiceLocal;
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         Integer privilegeId = Integer.parseInt(request.getParameter("privilegeradio"));

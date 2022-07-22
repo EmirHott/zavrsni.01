@@ -82,10 +82,7 @@ public class BookImg implements Serializable {
 
     @Override
     public String toString() {
-        return "BookImg{" +
-                "bookImgId=" + bookImgId +
-                ", imgPath='" + imgPath + '\'' +
-                '}';
+        return imgPath;
     }
 }
 

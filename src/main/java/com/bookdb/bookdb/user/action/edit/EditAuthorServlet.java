@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class EditAuthorServlet extends HttpServlet {
 
     @Inject
-    AuthorServiceLocal authorServiceLocal;
+    private AuthorServiceLocal authorServiceLocal;
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
 

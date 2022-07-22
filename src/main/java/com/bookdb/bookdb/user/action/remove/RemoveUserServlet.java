@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class RemoveUserServlet extends HttpServlet {
 
     @Inject
-    UserServiceLocal userServiceLocal;
+    private UserServiceLocal userServiceLocal;
 
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response){

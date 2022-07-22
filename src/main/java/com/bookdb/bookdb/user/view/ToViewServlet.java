@@ -27,17 +27,17 @@ import java.util.logging.Logger;
 @WebServlet(name = "ToViewServlet", value = "/ToViewServlet")
 public class ToViewServlet extends HttpServlet {
     @Inject
-    BookServiceLocal bookServiceLocal;
+    private BookServiceLocal bookServiceLocal;
     @Inject
-    UserServiceLocal userServiceLocal;
+    private  UserServiceLocal userServiceLocal;
     @Inject
-    NoteServiceLocal noteServiceLocal;
+    private NoteServiceLocal noteServiceLocal;
     @Inject
-    AuthorServiceLocal authorServiceLocal;
+    private AuthorServiceLocal authorServiceLocal;
     @Inject
-    GenreServiceLocal genreServiceLocal;
+    private GenreServiceLocal genreServiceLocal;
     @Inject
-    PublisherServiceLocal publisherServiceLocal;
+    private PublisherServiceLocal publisherServiceLocal;
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
 

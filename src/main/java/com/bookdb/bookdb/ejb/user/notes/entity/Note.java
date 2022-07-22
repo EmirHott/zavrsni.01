@@ -109,12 +109,6 @@ public class Note implements Serializable {
 
     @Override
     public String toString() {
-        return "Note{" +
-                "noteId=" + noteId +
-                ", userId=" + userId +
-                ", bookId=" + bookId +
-                ", noteText='" + noteText + '\'' +
-                ", statusId=" + statusId +
-                '}';
+        return noteTitle + "" + noteText;
     }
 }

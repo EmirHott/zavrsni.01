@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class EditBookImgServlet extends HttpServlet {
 
     @Inject
-    BookImgServiceLocal bookImgServiceLocal;
+    private BookImgServiceLocal bookImgServiceLocal;
 
 
 

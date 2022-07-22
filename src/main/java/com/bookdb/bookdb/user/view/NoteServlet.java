@@ -23,11 +23,11 @@ import java.util.logging.Logger;
 @WebServlet(name = "NoteServlet", value = "/NoteServlet")
 public class NoteServlet extends HttpServlet {
     @Inject
-    NoteServiceLocal noteServiceLocal;
+    private NoteServiceLocal noteServiceLocal;
     @Inject
-    StatusServiceLocal statusServiceLocal;
+    private StatusServiceLocal statusServiceLocal;
     @Inject
-    BookServiceLocal bookServiceLocal;
+    private BookServiceLocal bookServiceLocal;
 
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {

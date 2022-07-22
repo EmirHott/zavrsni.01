@@ -22,11 +22,11 @@ import java.util.logging.Logger;
 public class AddNoteServlet extends HttpServlet {
 
     @Inject
-    NoteServiceLocal noteServiceLocal;
+    private NoteServiceLocal noteServiceLocal;
     @Inject
-    BookServiceLocal bookServiceLocal;
+    private BookServiceLocal bookServiceLocal;
     @Inject
-    StatusServiceLocal statusServiceLocal;
+    private StatusServiceLocal statusServiceLocal;
 
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response){

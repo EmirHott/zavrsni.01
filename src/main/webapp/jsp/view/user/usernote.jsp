@@ -1,13 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.bookdb.bookdb.ejb.user.notes.entity.Note" %>
 <%@ page import="com.bookdb.bookdb.ejb.user.notes.status.entity.Status" %>
-<%@ page import="com.bookdb.bookdb.ejb.books.entity.Book" %><%--
-  Created by IntelliJ IDEA.
-  User: Emir
-  Date: 05/07/2022
-  Time: 00:48
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.bookdb.bookdb.ejb.books.entity.Book" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 @WebServlet(name = "UserServlet", value = "/UserServlet")
 public class UserServlet extends HttpServlet {
     @Inject
-    UserServiceLocal userServiceLocal;
+    private UserServiceLocal userServiceLocal;
 
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {

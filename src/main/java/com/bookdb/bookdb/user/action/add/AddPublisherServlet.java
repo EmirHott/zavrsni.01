@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class AddPublisherServlet extends HttpServlet {
 
     @Inject
-    PublisherServiceLocal publisherServiceLocal;
+    private PublisherServiceLocal publisherServiceLocal;
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response){
 

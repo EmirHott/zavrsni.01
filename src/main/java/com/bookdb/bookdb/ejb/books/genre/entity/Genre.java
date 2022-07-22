@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "genres")@NamedQueries({
+@Table(name = "genres")
+@NamedQueries({
         @NamedQuery(name = "Genres.findAll", query = "SELECT g FROM Genre g"),
         @NamedQuery(name = "Genres.findById", query = "SELECT g FROM Genre g WHERE g.genreId = :genreId"),
         @NamedQuery(name = "Genres.findByName", query = "SELECT g FROM Genre g WHERE g.genreName = :genreName"),

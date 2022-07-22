@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.bookdb.bookdb.ejb.user.entity.User" %>
+<%@ page import="com.bookdb.bookdb.user.session.Session" %><%--
   Created by IntelliJ IDEA.
   User: Emir
   Date: 04/07/2022
@@ -14,6 +15,7 @@
   <title></title>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background: lightblue">
   <div class="container-fluid">
     <a class="navbar-brand">BookDB</a>

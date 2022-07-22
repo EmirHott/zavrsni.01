@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class RemoveNoteServlet extends HttpServlet {
 
    @Inject
-   NoteServiceLocal noteServiceLocal;
+   private NoteServiceLocal noteServiceLocal;
 
    private void processRequest(HttpServletRequest request,HttpServletResponse response){
 

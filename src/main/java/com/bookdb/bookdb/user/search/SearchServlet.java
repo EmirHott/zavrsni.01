@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class SearchServlet extends HttpServlet {
 
     @Inject
-    BookServiceLocal bookServiceLocal;
+    private BookServiceLocal bookServiceLocal;
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
 

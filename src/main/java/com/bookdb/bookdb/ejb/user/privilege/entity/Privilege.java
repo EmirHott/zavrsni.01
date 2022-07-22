@@ -73,10 +73,7 @@ public class Privilege implements Serializable {
 
     @Override
     public String toString() {
-        return "Privilege{" +
-                "privilegeId=" + privilegeId +
-                ", privilegeName='" + privilegeName + '\'' +
-                '}';
+        return privilegeName;
     }
 }
 
